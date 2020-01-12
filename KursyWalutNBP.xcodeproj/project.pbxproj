@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A93AE97A23CB57FA0051AFD8 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93AE97923CB57FA0051AFD8 /* CurrencyCell.swift */; };
 		A9C4D75D23C933A400C2BA29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C4D75C23C933A400C2BA29 /* AppDelegate.swift */; };
 		A9C4D75F23C933A400C2BA29 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C4D75E23C933A400C2BA29 /* SceneDelegate.swift */; };
 		A9C4D76423C933A400C2BA29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9C4D76223C933A400C2BA29 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A93AE97923CB57FA0051AFD8 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		A9C4D75923C933A400C2BA29 /* KursyWalutNBP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KursyWalutNBP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9C4D75C23C933A400C2BA29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9C4D75E23C933A400C2BA29 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A93AE97323CB55EB0051AFD8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A93AE97423CB56240051AFD8 /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A93AE97423CB56240051AFD8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A93AE97923CB57FA0051AFD8 /* CurrencyCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A93AE97523CB56570051AFD8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A93AE97623CB566C0051AFD8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A93AE97723CB56790051AFD8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A9C4D76223C933A400C2BA29 /* Main.storyboard */,
+				A9C4D76823C933A600C2BA29 /* Assets.xcassets */,
+				A9C4D76523C933A400C2BA29 /* KursyWalutNBP.xcdatamodeld */,
+				A9C4D76A23C933A600C2BA29 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A93AE97823CB56DE0051AFD8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A9C4D76D23C933A600C2BA29 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		A9C4D75023C933A400C2BA29 = {
 			isa = PBXGroup;
 			children = (
@@ -58,11 +109,11 @@
 			children = (
 				A9C4D75C23C933A400C2BA29 /* AppDelegate.swift */,
 				A9C4D75E23C933A400C2BA29 /* SceneDelegate.swift */,
-				A9C4D76223C933A400C2BA29 /* Main.storyboard */,
-				A9C4D76823C933A600C2BA29 /* Assets.xcassets */,
-				A9C4D76A23C933A600C2BA29 /* LaunchScreen.storyboard */,
-				A9C4D76D23C933A600C2BA29 /* Info.plist */,
-				A9C4D76523C933A400C2BA29 /* KursyWalutNBP.xcdatamodeld */,
+				A93AE97523CB56570051AFD8 /* Model */,
+				A93AE97323CB55EB0051AFD8 /* View */,
+				A93AE97623CB566C0051AFD8 /* Controllers */,
+				A93AE97723CB56790051AFD8 /* Resources */,
+				A93AE97823CB56DE0051AFD8 /* Supporting Files */,
 			);
 			path = KursyWalutNBP;
 			sourceTree = "<group>";
@@ -138,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A93AE97A23CB57FA0051AFD8 /* CurrencyCell.swift in Sources */,
 				A9C4D76723C933A400C2BA29 /* KursyWalutNBP.xcdatamodeld in Sources */,
 				A9C4D75D23C933A400C2BA29 /* AppDelegate.swift in Sources */,
 				A9C4D75F23C933A400C2BA29 /* SceneDelegate.swift in Sources */,
