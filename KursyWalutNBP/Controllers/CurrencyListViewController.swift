@@ -18,6 +18,15 @@ class CurrencyListViewController: UIViewController {
         Currency(tableName: "A", currencyName: "Polski Złoty", currencyCode: "PL", averageCurrencyRate: 0.45633),
         Currency(tableName: "A", currencyName: "Amerykański Dolar", currencyCode: "USD", averageCurrencyRate: 1),
         Currency(tableName: "A", currencyName: "Czeska Korona", currencyCode: "CK", averageCurrencyRate: 0.556),
+        Currency(tableName: "A", currencyName: "Euro", currencyCode: "EUR", averageCurrencyRate: 1.2633),
+        Currency(tableName: "A", currencyName: "Amerykański Dolar", currencyCode: "USD", averageCurrencyRate: 1),
+        Currency(tableName: "A", currencyName: "Czeska Korona", currencyCode: "CK", averageCurrencyRate: 0.556),
+        Currency(tableName: "A", currencyName: "Euro", currencyCode: "EUR", averageCurrencyRate: 1.2633),
+        Currency(tableName: "A", currencyName: "Amerykański Dolar", currencyCode: "USD", averageCurrencyRate: 1),
+        Currency(tableName: "A", currencyName: "Czeska Korona", currencyCode: "CK", averageCurrencyRate: 0.556),
+        Currency(tableName: "A", currencyName: "Euro", currencyCode: "EUR", averageCurrencyRate: 1.2633),
+        Currency(tableName: "A", currencyName: "Amerykański Dolar", currencyCode: "USD", averageCurrencyRate: 1),
+        Currency(tableName: "A", currencyName: "Czeska Korona", currencyCode: "CK", averageCurrencyRate: 0.556),
         Currency(tableName: "A", currencyName: "Euro", currencyCode: "EUR", averageCurrencyRate: 1.2633)]
 
  //
@@ -43,17 +52,6 @@ class CurrencyListViewController: UIViewController {
 // MARK: - Table View Data Source
 //
 extension CurrencyListViewController: UITableViewDataSource {
-//  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//    let currencyCell = tableView.dequeueReusableCell(withIdentifier: CurrencyCell.identifier, for: indexPath) as! CurrencyCell
-//
-//    if let currency = currencies[indexPath.row] {
-//        currencyCell.currencyCodeLabel.text = currency.currencyCode
-//        currencyCell.averageCurrencyRateValueLabel.text = "\(currency.averageCurrencyRate)"
-//        currencyCell.currencyNameLabel.text = currency.currencyName
-//    }
-//
-//    return currencyCell
-//  }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currency = currencies[indexPath.row]
