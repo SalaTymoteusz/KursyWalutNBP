@@ -17,24 +17,24 @@ class Currency {
     // MARK: - Variables and Properties
     //
     var tableName: String
-    var efectiveDate: Date
+    //var efectiveDate: Date
     var currencyName: String
     var currencyCode: String
     var averageCurrencyRate: Double
     
-    var dateString: String {
-      return Constants.DateFormatters.simpleDateFormatter.string(from: efectiveDate)
-    }
+//    var dateString: String {
+//      return Constants.DateFormatters.simpleDateFormatter.string(from: efectiveDate)
+//    }
     
     //
     // MARK: - Initialization
     //
-    init(tableName: String, currencyName: String, currencyCode: String, averageCurrencyRate: Double, efectiveDate: Date) {
+    init(tableName: String, currencyName: String, currencyCode: String, averageCurrencyRate: Double) {
       self.tableName = tableName
       self.currencyName = currencyName
       self.currencyCode = currencyCode
       self.averageCurrencyRate = averageCurrencyRate
-      self.efectiveDate = efectiveDate
+      //self.efectiveDate = efectiveDate
     }
 }
 
