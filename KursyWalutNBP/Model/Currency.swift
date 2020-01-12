@@ -14,13 +14,17 @@ import Foundation
 class Currency {
     
     //
-    // MARK: - Variables
+    // MARK: - Variables and Properties
     //
     var tableName: String
     var efectiveDate: Date
     var currencyName: String
     var currencyCode: String
     var averageCurrencyRate: Double
+    
+    var dateString: String {
+      return Constants.DateFormatters.simpleDateFormatter.string(from: efectiveDate)
+    }
     
     //
     // MARK: - Initialization
