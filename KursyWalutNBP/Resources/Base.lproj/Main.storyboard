@@ -85,7 +85,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="AverageCurrencyValueLabel" destination="IhQ-79-e0e" id="U6G-9l-b43"/>
+                                            <outlet property="AverageCurrencyRateValueLabel" destination="IhQ-79-e0e" id="U6G-9l-b43"/>
                                             <outlet property="CurrencyCodeLabel" destination="aU4-Re-nb3" id="6Ya-FR-ZYh"/>
                                             <outlet property="CurrencyNameLabel" destination="h1P-aQ-sfU" id="Tbp-1r-DlS"/>
                                         </connections>
