@@ -22,9 +22,9 @@ class CurrencyCell: UITableViewCell {
     // MARK: - Outlets
     //
     
-    @IBOutlet weak var CurrencyCodeLabel: UILabel!
-    @IBOutlet weak var CurrencyNameLabel: UILabel!
-    @IBOutlet weak var AverageCurrencyRateValueLabel: UILabel!
+    @IBOutlet weak var currencyCodeLabel: UILabel!
+    @IBOutlet weak var currencyNameLabel: UILabel!
+    @IBOutlet weak var averageCurrencyRateValueLabel: UILabel!
     
     //
     // MARK: - Table View Cell
@@ -32,8 +32,8 @@ class CurrencyCell: UITableViewCell {
     override func prepareForReuse() {
       super.prepareForReuse()
       
-      CurrencyCodeLabel.text = nil
-      CurrencyNameLabel.text = nil
-      AverageCurrencyRateValueLabel.text = nil
+      currencyCodeLabel.text = nil
+      currencyNameLabel.text = nil
+      averageCurrencyRateValueLabel.text = nil
     }
 }

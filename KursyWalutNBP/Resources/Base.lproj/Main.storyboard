@@ -39,10 +39,10 @@
             </objects>
             <point key="canvasLocation" x="322" y="1616"/>
         </scene>
-        <!--Aktualny kurs z 11-01-2020-->
+        <!--Currency List View Controller-->
         <scene sceneID="rut-tZ-ySI">
             <objects>
-                <viewController id="Hh4-xq-lQj" sceneMemberID="viewController">
+                <viewController id="Hh4-xq-lQj" customClass="CurrencyListViewController" customModule="KursyWalutNBP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jq5-X6-D5E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,12 +85,16 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="AverageCurrencyRateValueLabel" destination="IhQ-79-e0e" id="U6G-9l-b43"/>
-                                            <outlet property="CurrencyCodeLabel" destination="aU4-Re-nb3" id="6Ya-FR-ZYh"/>
-                                            <outlet property="CurrencyNameLabel" destination="h1P-aQ-sfU" id="Tbp-1r-DlS"/>
+                                            <outlet property="averageCurrencyRateValueLabel" destination="IhQ-79-e0e" id="U6G-9l-b43"/>
+                                            <outlet property="currencyCodeLabel" destination="aU4-Re-nb3" id="6Ya-FR-ZYh"/>
+                                            <outlet property="currencyNameLabel" destination="h1P-aQ-sfU" id="Tbp-1r-DlS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Hh4-xq-lQj" id="Tdc-rF-oWm"/>
+                                    <outlet property="delegate" destination="Hh4-xq-lQj" id="EFO-ZQ-0il"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STA-76-FUe">
                                 <rect key="frame" x="0.0" y="88" width="359" height="57"/>
@@ -119,7 +123,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aMd-BK-gic"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Aktualny kurs z 11-01-2020" id="24f-2m-nSY"/>
+                    <navigationItem key="navigationItem" id="24f-2m-nSY"/>
+                    <connections>
+                        <outlet property="tableView" destination="ZnX-1w-x5c" id="8im-yN-r5N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U6d-AO-jwj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
