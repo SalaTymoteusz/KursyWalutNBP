@@ -13,7 +13,7 @@ import SwiftyJSON
 //
 // MARK: - Currency List View Controller
 //
-class CurrencyListViewController: UIViewController {
+class CurrencyListBViewController: UIViewController {
     
     
 
@@ -83,7 +83,7 @@ class CurrencyListViewController: UIViewController {
     //
     func fetchCurrenyData() {
         DispatchQueue.main.async {
-            let apiUrl = "http://api.nbp.pl/api/exchangerates/tables/a/"
+            let apiUrl = "http://api.nbp.pl/api/exchangerates/tables/b/"
             Alamofire.request(apiUrl, method: .get).responseJSON(completionHandler: { (response) in
                 switch response.result {
                 case .success(let value):
@@ -110,7 +110,7 @@ class CurrencyListViewController: UIViewController {
 //
 // MARK: - Table View Data Source
 //
-extension CurrencyListViewController: UITableViewDataSource {
+extension CurrencyListBViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currency = self.currencies[indexPath.row]
@@ -131,7 +131,7 @@ extension CurrencyListViewController: UITableViewDataSource {
 //
 // MARK: - Table View Delegate
 //
-extension CurrencyListViewController: UITableViewDelegate {
+extension CurrencyListBViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
   }

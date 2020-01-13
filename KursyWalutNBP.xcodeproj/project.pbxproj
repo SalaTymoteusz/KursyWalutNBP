@@ -11,7 +11,8 @@
 		A93AE97A23CB57FA0051AFD8 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93AE97923CB57FA0051AFD8 /* CurrencyCell.swift */; };
 		A93AE97C23CB6DFB0051AFD8 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93AE97B23CB6DFB0051AFD8 /* Currency.swift */; };
 		A93AE97E23CB6F240051AFD8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93AE97D23CB6F240051AFD8 /* Constants.swift */; };
-		A93AE98023CB73A80051AFD8 /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93AE97F23CB73A80051AFD8 /* CurrencyListViewController.swift */; };
+		A93AE98023CB73A80051AFD8 /* CurrencyListAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93AE97F23CB73A80051AFD8 /* CurrencyListAViewController.swift */; };
+		A93AE98C23CCE65F0051AFD8 /* CurrencyListBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93AE98B23CCE65F0051AFD8 /* CurrencyListBViewController.swift */; };
 		A9C4D75D23C933A400C2BA29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C4D75C23C933A400C2BA29 /* AppDelegate.swift */; };
 		A9C4D75F23C933A400C2BA29 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C4D75E23C933A400C2BA29 /* SceneDelegate.swift */; };
 		A9C4D76423C933A400C2BA29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9C4D76223C933A400C2BA29 /* Main.storyboard */; };
@@ -27,7 +28,8 @@
 		A93AE97923CB57FA0051AFD8 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		A93AE97B23CB6DFB0051AFD8 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		A93AE97D23CB6F240051AFD8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		A93AE97F23CB73A80051AFD8 /* CurrencyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewController.swift; sourceTree = "<group>"; };
+		A93AE97F23CB73A80051AFD8 /* CurrencyListAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListAViewController.swift; sourceTree = "<group>"; };
+		A93AE98B23CCE65F0051AFD8 /* CurrencyListBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListBViewController.swift; sourceTree = "<group>"; };
 		A9C4D75923C933A400C2BA29 /* KursyWalutNBP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KursyWalutNBP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9C4D75C23C933A400C2BA29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9C4D75E23C933A400C2BA29 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,7 +87,8 @@
 		A93AE97623CB566C0051AFD8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A93AE97F23CB73A80051AFD8 /* CurrencyListViewController.swift */,
+				A93AE97F23CB73A80051AFD8 /* CurrencyListAViewController.swift */,
+				A93AE98B23CCE65F0051AFD8 /* CurrencyListBViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -266,9 +269,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A93AE97A23CB57FA0051AFD8 /* CurrencyCell.swift in Sources */,
-				A93AE98023CB73A80051AFD8 /* CurrencyListViewController.swift in Sources */,
+				A93AE98023CB73A80051AFD8 /* CurrencyListAViewController.swift in Sources */,
 				A93AE97C23CB6DFB0051AFD8 /* Currency.swift in Sources */,
 				A9C4D76723C933A400C2BA29 /* KursyWalutNBP.xcdatamodeld in Sources */,
+				A93AE98C23CCE65F0051AFD8 /* CurrencyListBViewController.swift in Sources */,
 				A9C4D75D23C933A400C2BA29 /* AppDelegate.swift in Sources */,
 				A9C4D75F23C933A400C2BA29 /* SceneDelegate.swift in Sources */,
 				A93AE97E23CB6F240051AFD8 /* Constants.swift in Sources */,
