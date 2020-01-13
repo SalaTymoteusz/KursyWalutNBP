@@ -25,6 +25,7 @@ class CurrencyCell: UITableViewCell {
     @IBOutlet weak var currencyCodeLabel: UILabel!
     @IBOutlet weak var currencyNameLabel: UILabel!
     @IBOutlet weak var averageCurrencyRateValueLabel: UILabel!
+    @IBOutlet weak var effectiveDateLabel: UILabel!
     
     //
     // MARK: - Table View Cell
@@ -35,5 +36,6 @@ class CurrencyCell: UITableViewCell {
       currencyCodeLabel.text = nil
       currencyNameLabel.text = nil
       averageCurrencyRateValueLabel.text = nil
+      effectiveDateLabel.text = nil
     }
 }

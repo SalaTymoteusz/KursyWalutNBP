@@ -9,33 +9,18 @@
 import Foundation
 
 //
-// MARK: - Currency
+// MARK: - Currency Struct
 //
-class Currency {
+struct Currency {
     
     //
     // MARK: - Variables and Properties
     //
-    var tableName: String
-    //var efectiveDate: Date
-    var currencyName: String
-    var currencyCode: String
-    var averageCurrencyRate: Double
-    
-//    var dateString: String {
-//      return Constants.DateFormatters.simpleDateFormatter.string(from: efectiveDate)
-//    }
-    
-    //
-    // MARK: - Initialization
-    //
-    init(tableName: String, currencyName: String, currencyCode: String, averageCurrencyRate: Double) {
-      self.tableName = tableName
-      self.currencyName = currencyName
-      self.currencyCode = currencyCode
-      self.averageCurrencyRate = averageCurrencyRate
-      //self.efectiveDate = efectiveDate
-    }
+    let tableName: String
+    let currencyName: String
+    let currencyCode: String
+    let averageCurrencyRate: Double
+    let effectiveDate: String
 }
 
 

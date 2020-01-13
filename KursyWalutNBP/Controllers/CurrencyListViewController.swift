@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 //
 // MARK: - Currency List View Controller
@@ -14,38 +16,95 @@ import UIKit
 class CurrencyListViewController: UIViewController {
     
     
-    var currencies: [Currency] = [
-        Currency(tableName: "A", currencyName: "Polski Złoty", currencyCode: "PL", averageCurrencyRate: 0.45633),
-        Currency(tableName: "A", currencyName: "Amerykański Dolar", currencyCode: "USD", averageCurrencyRate: 1),
-        Currency(tableName: "A", currencyName: "Czeska Korona", currencyCode: "CK", averageCurrencyRate: 0.556),
-        Currency(tableName: "A", currencyName: "Euro", currencyCode: "EUR", averageCurrencyRate: 1.2633),
-        Currency(tableName: "A", currencyName: "Amerykański Dolar", currencyCode: "USD", averageCurrencyRate: 1),
-        Currency(tableName: "A", currencyName: "Czeska Korona", currencyCode: "CK", averageCurrencyRate: 0.556),
-        Currency(tableName: "A", currencyName: "Euro", currencyCode: "EUR", averageCurrencyRate: 1.2633),
-        Currency(tableName: "A", currencyName: "Amerykański Dolar", currencyCode: "USD", averageCurrencyRate: 1),
-        Currency(tableName: "A", currencyName: "Czeska Korona", currencyCode: "CK", averageCurrencyRate: 0.556),
-        Currency(tableName: "A", currencyName: "Euro", currencyCode: "EUR", averageCurrencyRate: 1.2633),
-        Currency(tableName: "A", currencyName: "Amerykański Dolar", currencyCode: "USD", averageCurrencyRate: 1),
-        Currency(tableName: "A", currencyName: "Czeska Korona", currencyCode: "CK", averageCurrencyRate: 0.556),
-        Currency(tableName: "A", currencyName: "Euro", currencyCode: "EUR", averageCurrencyRate: 1.2633)]
 
- //
- // MARK: - Variables And Properties
- //
-// var currencyArray: CurrencyArray? {
-//     didSet {
-//     if isViewLoaded {
-//         tableView.reloadData()
-//     }
-//   }
-// }
+    override func viewDidLoad() {
+        super.viewDidLoad()
     
+        //
+        // MARK: - Custom Navigation Bar
+        //
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.06753489709, green: 0.1450980392, blue: 0.168627451, alpha: 1)
+        
+        //
+        // MARK: - Custom Tab Bar
+        //
+        tabBarController?.tabBar.barTintColor = #colorLiteral(red: 0.06753489709, green: 0.1450980392, blue: 0.168627451, alpha: 1)
+        
+        // first load data
+        fetchCurrenyData()
+        
+        //
+        // MARK: - Refresh Table View
+        //
+        tableView.refreshControl = refresher
+    }
     
+    //
+    // MARK: - Variables And Properties
+    //
+    var currencies: [Currency] = []
     
+    lazy var refresher: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .white
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
+        return refreshControl
+    }()
+ 
     //
     // MARK: - Outlets
     //
     @IBOutlet weak var tableView: UITableView!
+    
+    //
+    // MARK: - Actions
+    //
+    @IBAction func tappedRefreshButton(_ sender: Any) {
+        //fetchCurrenyData()
+    }
+    
+    
+    //
+    // MARK: - available to Objective-C
+    //
+    @objc func refresh() {
+        fetchCurrenyData()
+        
+        let deadline = DispatchTime.now() + .milliseconds(700)
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
+            self.refresher.endRefreshing()
+        }
+    }
+    
+    
+    //
+    // MARK: - Fetch JSON Data
+    //
+    func fetchCurrenyData() {
+        DispatchQueue.main.async {
+            let apiUrl = "http://api.nbp.pl/api/exchangerates/tables/a/"
+            Alamofire.request(apiUrl, method: .get).responseJSON(completionHandler: { (response) in
+                switch response.result {
+                case .success(let value):
+                    
+                    self.currencies.removeAll()
+
+                    let json = JSON(value)
+                    let data = json[0]
+                    let effectiveDateString = json[0, "effectiveDate"].stringValue
+                    data["rates"].array?.forEach({(currency) in
+                        let currency = Currency(tableName: "A", currencyName: currency["currency"].stringValue, currencyCode: currency["code"].stringValue, averageCurrencyRate: currency["mid"].doubleValue, effectiveDate: effectiveDateString)
+                        self.currencies.append(currency)
+                    })
+                    self.tableView.reloadData()
+                    print("table reloaded")
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
+        }
+    }
 }
 
 //
@@ -54,17 +113,18 @@ class CurrencyListViewController: UIViewController {
 extension CurrencyListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let currency = currencies[indexPath.row]
+        let currency = self.currencies[indexPath.row]
         let currencyCell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as! CurrencyCell
         currencyCell.currencyCodeLabel.text = currency.currencyCode
         currencyCell.averageCurrencyRateValueLabel.text = "\(currency.averageCurrencyRate)"
         currencyCell.currencyNameLabel.text = currency.currencyName
+        currencyCell.effectiveDateLabel.text = currency.effectiveDate
         
         return currencyCell
     }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return currencies.count
+    return self.currencies.count
   }
 }
 
@@ -76,3 +136,6 @@ extension CurrencyListViewController: UITableViewDelegate {
     tableView.deselectRow(at: indexPath, animated: true)
   }
 }
+
+
+
