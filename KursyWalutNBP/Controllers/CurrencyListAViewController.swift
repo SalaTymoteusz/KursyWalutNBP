@@ -105,6 +105,26 @@ class CurrencyListAViewController: UIViewController {
             })
         }
     }
+    
+    
+    
+    //
+    // MARK: - Pass Data to Detail View Controller
+    //
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+  
+        if
+            segue.identifier == "ShowDetails",
+            let detailViewController = segue.destination as? DetailViewController,
+            let currencyCell = sender as? UITableViewCell,
+            let row = tableView.indexPath(for: currencyCell)?.row
+        {
+            let currencyName = currencies[row].currencyName
+            detailViewController.name = currencyName
+        }
+    }
+    
 }
 
 //
@@ -133,7 +153,9 @@ extension CurrencyListAViewController: UITableViewDataSource {
 //
 extension CurrencyListAViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
     tableView.deselectRow(at: indexPath, animated: true)
+
   }
 }
 

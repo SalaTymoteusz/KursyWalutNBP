@@ -105,6 +105,23 @@ class CurrencyListBViewController: UIViewController {
             })
         }
     }
+    
+      //
+      // MARK: - Pass Data to Detail View Controller
+      //
+      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          super.prepare(for: segue, sender: sender)
+    
+          if
+              segue.identifier == "ShowDetails",
+              let detailViewController = segue.destination as? DetailViewController,
+              let currencyCell = sender as? UITableViewCell,
+              let row = tableView.indexPath(for: currencyCell)?.row
+          {
+              let currencyName = currencies[row].currencyName
+              detailViewController.name = currencyName
+          }
+      }
 }
 
 //

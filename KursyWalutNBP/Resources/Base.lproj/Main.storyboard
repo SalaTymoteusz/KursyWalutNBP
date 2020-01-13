@@ -63,6 +63,7 @@
                                             <outlet property="currencyCodeLabel" destination="aU4-Re-nb3" id="6Ya-FR-ZYh"/>
                                             <outlet property="currencyNameLabel" destination="h1P-aQ-sfU" id="Tbp-1r-DlS"/>
                                             <outlet property="effectiveDateLabel" destination="PMp-Hv-5Gy" id="GsL-Fp-IOn"/>
+                                            <segue destination="2Rv-eZ-J3h" kind="show" identifier="ShowDetails" id="8gQ-eK-lhZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -205,6 +206,7 @@
                                             <outlet property="currencyCodeLabel" destination="PNe-6v-v8j" id="Dga-Bv-5Wd"/>
                                             <outlet property="currencyNameLabel" destination="rjW-S6-oLH" id="2sN-Af-pVf"/>
                                             <outlet property="effectiveDateLabel" destination="oAj-TK-BDg" id="s6P-5u-JFi"/>
+                                            <segue destination="2Rv-eZ-J3h" kind="show" identifier="ShowDetails" id="vme-3V-UYA"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -232,8 +234,44 @@
             </objects>
             <point key="canvasLocation" x="322" y="948"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="hF0-JR-eKY">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="2Rv-eZ-J3h" customClass="DetailViewController" customModule="KursyWalutNBP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OFC-QP-lLQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3U8-G7-JQe">
+                                <rect key="frame" x="20" y="20" width="374" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3U8-G7-JQe" firstAttribute="trailing" secondItem="OFC-QP-lLQ" secondAttribute="trailingMargin" id="DBz-Ib-9j6"/>
+                            <constraint firstItem="3U8-G7-JQe" firstAttribute="top" secondItem="Kqy-pC-tVP" secondAttribute="top" constant="20" id="ERL-kT-u2n"/>
+                            <constraint firstItem="Kqy-pC-tVP" firstAttribute="bottom" secondItem="3U8-G7-JQe" secondAttribute="bottom" constant="665" id="Gg9-Mk-04a"/>
+                            <constraint firstItem="3U8-G7-JQe" firstAttribute="leading" secondItem="OFC-QP-lLQ" secondAttribute="leadingMargin" id="wyg-LN-3dN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kqy-pC-tVP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7eA-aW-CoN"/>
+                    <connections>
+                        <outlet property="currencyNameLabel" destination="3U8-G7-JQe" id="Vg3-eu-Cgn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xKQ-yq-QoW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1230.4347826086957" y="677.67857142857144"/>
+        </scene>
     </scenes>
     <resources>
         <image name="list.dash" catalog="system" width="64" height="42"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="vme-3V-UYA"/>
+    </inferredMetricsTieBreakers>
 </document>
