@@ -23,12 +23,12 @@ class CurrencyListAViewController: UIViewController {
         //
         // MARK: - Custom Navigation Bar
         //
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.06753489709, green: 0.1450980392, blue: 0.168627451, alpha: 1)
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
         //
         // MARK: - Custom Tab Bar
         //
-        tabBarController?.tabBar.barTintColor = #colorLiteral(red: 0.06753489709, green: 0.1450980392, blue: 0.168627451, alpha: 1)
+        tabBarController?.tabBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
         // first load data
         fetchCurrenyData()
