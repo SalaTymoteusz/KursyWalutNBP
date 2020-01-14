@@ -19,7 +19,7 @@ class CurrencyListAViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         //
         // MARK: - Custom Navigation Bar
         //
@@ -32,7 +32,7 @@ class CurrencyListAViewController: UIViewController {
         
         // first load data
         fetchCurrenyData()
-        
+
         //
         // MARK: - Refresh Table View
         //
@@ -106,8 +106,6 @@ class CurrencyListAViewController: UIViewController {
         }
     }
     
-    
-    
     //
     // MARK: - Pass Data to Detail View Controller
     //
@@ -120,8 +118,8 @@ class CurrencyListAViewController: UIViewController {
             let currencyCell = sender as? UITableViewCell,
             let row = tableView.indexPath(for: currencyCell)?.row
         {
-            let currencyName = currencies[row].currencyName
-            detailViewController.name = currencyName
+            detailViewController.name = currencies[row].currencyName
+            detailViewController.code = currencies[row].currencyCode
         }
     }
     

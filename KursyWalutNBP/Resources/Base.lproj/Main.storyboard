@@ -63,7 +63,7 @@
                                             <outlet property="currencyCodeLabel" destination="aU4-Re-nb3" id="6Ya-FR-ZYh"/>
                                             <outlet property="currencyNameLabel" destination="h1P-aQ-sfU" id="Tbp-1r-DlS"/>
                                             <outlet property="effectiveDateLabel" destination="PMp-Hv-5Gy" id="GsL-Fp-IOn"/>
-                                            <segue destination="2Rv-eZ-J3h" kind="show" identifier="ShowDetails" id="8gQ-eK-lhZ"/>
+                                            <segue destination="i9z-Fe-FZq" kind="show" identifier="ShowDetails" id="0S6-GC-oNr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -206,7 +206,7 @@
                                             <outlet property="currencyCodeLabel" destination="PNe-6v-v8j" id="Dga-Bv-5Wd"/>
                                             <outlet property="currencyNameLabel" destination="rjW-S6-oLH" id="2sN-Af-pVf"/>
                                             <outlet property="effectiveDateLabel" destination="oAj-TK-BDg" id="s6P-5u-JFi"/>
-                                            <segue destination="2Rv-eZ-J3h" kind="show" identifier="ShowDetails" id="vme-3V-UYA"/>
+                                            <segue destination="i9z-Fe-FZq" kind="show" identifier="ShowDetails" id="nGO-yI-ivJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -235,43 +235,86 @@
             <point key="canvasLocation" x="322" y="948"/>
         </scene>
         <!--Detail View Controller-->
-        <scene sceneID="hF0-JR-eKY">
+        <scene sceneID="2tN-Ew-1BK">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" id="2Rv-eZ-J3h" customClass="DetailViewController" customModule="KursyWalutNBP" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OFC-QP-lLQ">
+                <viewController id="i9z-Fe-FZq" customClass="DetailViewController" customModule="KursyWalutNBP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E8A-Ca-eD4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3U8-G7-JQe">
-                                <rect key="frame" x="20" y="20" width="374" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JLK-9W-bwp">
+                                <rect key="frame" x="0.0" y="358" width="414" height="367"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrencyCell" id="O8a-Ht-hYL" customClass="CurrencyCell" customModule="KursyWalutNBP" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O8a-Ht-hYL" id="zU8-to-Lik">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2020-01-10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NH-aY-Wk8">
+                                                    <rect key="frame" x="20" y="25" width="158" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <color key="textColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3.8272" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3w-yO-khI">
+                                                    <rect key="frame" x="236" y="17" width="158" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <color key="textColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="averageCurrencyRateValueLabel" destination="d3w-yO-khI" id="TdZ-9Q-LRZ"/>
+                                            <outlet property="effectiveDateLabel" destination="3NH-aY-Wk8" id="Rph-wQ-OSr"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="i9z-Fe-FZq" id="j5h-PM-xFg"/>
+                                    <outlet property="delegate" destination="i9z-Fe-FZq" id="J7e-Hl-i7b"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8k-UU-ZIf">
+                                <rect key="frame" x="20" y="20" width="374" height="312"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="3U8-G7-JQe" firstAttribute="trailing" secondItem="OFC-QP-lLQ" secondAttribute="trailingMargin" id="DBz-Ib-9j6"/>
-                            <constraint firstItem="3U8-G7-JQe" firstAttribute="top" secondItem="Kqy-pC-tVP" secondAttribute="top" constant="20" id="ERL-kT-u2n"/>
-                            <constraint firstItem="Kqy-pC-tVP" firstAttribute="bottom" secondItem="3U8-G7-JQe" secondAttribute="bottom" constant="665" id="Gg9-Mk-04a"/>
-                            <constraint firstItem="3U8-G7-JQe" firstAttribute="leading" secondItem="OFC-QP-lLQ" secondAttribute="leadingMargin" id="wyg-LN-3dN"/>
+                            <constraint firstItem="JLK-9W-bwp" firstAttribute="leading" secondItem="MPV-bf-h4U" secondAttribute="leading" id="2If-v7-iwM"/>
+                            <constraint firstItem="L8k-UU-ZIf" firstAttribute="top" secondItem="MPV-bf-h4U" secondAttribute="top" constant="20" id="6Vq-KQ-rK0"/>
+                            <constraint firstItem="JLK-9W-bwp" firstAttribute="centerX" secondItem="E8A-Ca-eD4" secondAttribute="centerX" id="9Tx-Z0-Xhb"/>
+                            <constraint firstItem="JLK-9W-bwp" firstAttribute="top" secondItem="MPV-bf-h4U" secondAttribute="top" constant="358" id="AUc-6l-wX1"/>
+                            <constraint firstItem="L8k-UU-ZIf" firstAttribute="centerX" secondItem="JLK-9W-bwp" secondAttribute="centerX" id="EjR-Vz-BVc"/>
+                            <constraint firstItem="L8k-UU-ZIf" firstAttribute="leading" secondItem="E8A-Ca-eD4" secondAttribute="leadingMargin" id="SOq-DB-LoM"/>
+                            <constraint firstItem="JLK-9W-bwp" firstAttribute="bottom" secondItem="MPV-bf-h4U" secondAttribute="bottom" id="hKY-YL-dJ3"/>
+                            <constraint firstItem="JLK-9W-bwp" firstAttribute="top" secondItem="L8k-UU-ZIf" secondAttribute="bottom" constant="26" id="nYq-nw-tVb"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Kqy-pC-tVP"/>
+                        <viewLayoutGuide key="safeArea" id="MPV-bf-h4U"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7eA-aW-CoN"/>
+                    <navigationItem key="navigationItem" id="00Q-kp-BYc"/>
                     <connections>
-                        <outlet property="currencyNameLabel" destination="3U8-G7-JQe" id="Vg3-eu-Cgn"/>
+                        <outlet property="chartView" destination="L8k-UU-ZIf" id="q4g-sy-Ji1"/>
+                        <outlet property="tableView" destination="JLK-9W-bwp" id="3OK-uf-Q9Y"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xKQ-yq-QoW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zaa-UD-mFw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1230.4347826086957" y="677.67857142857144"/>
+            <point key="canvasLocation" x="1282.608695652174" y="639.50892857142856"/>
         </scene>
     </scenes>
     <resources>
         <image name="list.dash" catalog="system" width="64" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vme-3V-UYA"/>
+        <segue reference="0S6-GC-oNr"/>
     </inferredMetricsTieBreakers>
 </document>

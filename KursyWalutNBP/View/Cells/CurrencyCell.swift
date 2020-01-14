@@ -30,12 +30,12 @@ class CurrencyCell: UITableViewCell {
     //
     // MARK: - Table View Cell
     //
-    override func prepareForReuse() {
-      super.prepareForReuse()
-      
-      currencyCodeLabel.text = nil
-      currencyNameLabel.text = nil
-      averageCurrencyRateValueLabel.text = nil
-      effectiveDateLabel.text = nil
-    }
+//    override func prepareForReuse() {
+//      super.prepareForReuse()
+//      
+//      currencyCodeLabel.text = nil
+//      currencyNameLabel.text = nil
+//      averageCurrencyRateValueLabel.text = nil
+//      effectiveDateLabel.text = nil
+//    }
 }
