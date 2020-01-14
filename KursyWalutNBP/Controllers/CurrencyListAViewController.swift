@@ -2,6 +2,7 @@
 //  CurrencyListViewController.swift
 //  KursyWalutNBP
 //
+//  Tested on iphone 11
 //  Created by xxx on 12/01/2020.
 //  Copyright © 2020 xxx. All rights reserved.
 //

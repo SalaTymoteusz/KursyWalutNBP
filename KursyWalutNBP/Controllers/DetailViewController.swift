@@ -2,6 +2,7 @@
 //  DetailViewController.swift
 //  KursyWalutNBP
 //
+//  Tested on iphone 11
 //  Created by xxx on 12/01/2020.
 //  Copyright © 2020 xxx. All rights reserved.
 //
@@ -79,7 +80,6 @@ class DetailViewController: UIViewController {
     var name: String = ""
     var code: String = ""
     var tableName: String = ""
-    var i = 0
     var startDatePicker: UIDatePicker?
     var endDatePicker: UIDatePicker?
     var startDate: String = "2019-12-01"
@@ -168,7 +168,6 @@ class DetailViewController: UIViewController {
                 self.currencies.removeAll()
                 self.chartData.removeAll()
                 
-                self.i = 0
                 
                 // Parse json data
                 let data = JSON(value)
@@ -182,9 +181,8 @@ class DetailViewController: UIViewController {
                     //
                     
                     // Set value to chart point
-                    let point = ChartDataEntry(x: Double(self.i), y: currency.averageCurrencyRate)
+                    let point = ChartDataEntry(x: Double(self.currencies.count - 1), y: currency.averageCurrencyRate)
                     self.chartData.append(point)
-                    self.i = self.i + 1
                     })
                     // Present chart
                     self.setChartView(chartData: self.chartData)
