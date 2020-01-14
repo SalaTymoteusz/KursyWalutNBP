@@ -26,16 +26,4 @@ class CurrencyCell: UITableViewCell {
     @IBOutlet weak var currencyNameLabel: UILabel!
     @IBOutlet weak var averageCurrencyRateValueLabel: UILabel!
     @IBOutlet weak var effectiveDateLabel: UILabel!
-    
-    //
-    // MARK: - Table View Cell
-    //
-//    override func prepareForReuse() {
-//      super.prepareForReuse()
-//      
-//      currencyCodeLabel.text = nil
-//      currencyNameLabel.text = nil
-//      averageCurrencyRateValueLabel.text = nil
-//      effectiveDateLabel.text = nil
-//    }
 }
