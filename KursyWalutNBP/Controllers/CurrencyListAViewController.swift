@@ -120,6 +120,7 @@ class CurrencyListAViewController: UIViewController {
         {
             detailViewController.name = currencies[row].currencyName
             detailViewController.code = currencies[row].currencyCode
+            detailViewController.tableName = currencies[row].tableName
         }
     }
     

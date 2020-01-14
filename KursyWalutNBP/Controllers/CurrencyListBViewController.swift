@@ -95,7 +95,7 @@ class CurrencyListBViewController: UIViewController {
                     print(data)
                     let effectiveDateString = json[0, "effectiveDate"].stringValue
                     data["rates"].array?.forEach({(currency) in
-                        let currency = Currency(tableName: "A", currencyName: currency["currency"].stringValue, currencyCode: currency["code"].stringValue, averageCurrencyRate: currency["mid"].doubleValue, effectiveDate: effectiveDateString)
+                        let currency = Currency(tableName: "B", currencyName: currency["currency"].stringValue, currencyCode: currency["code"].stringValue, averageCurrencyRate: currency["mid"].doubleValue, effectiveDate: effectiveDateString)
                         self.currencies.append(currency)
                     })
                     self.tableView.reloadData()
@@ -120,7 +120,8 @@ class CurrencyListBViewController: UIViewController {
               let row = tableView.indexPath(for: currencyCell)?.row
           {
             detailViewController.name = currencies[row].currencyName
-                  detailViewController.code = currencies[row].currencyCode
+            detailViewController.code = currencies[row].currencyCode
+            detailViewController.tableName = currencies[row].tableName
           }
       }
 }

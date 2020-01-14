@@ -49,6 +49,7 @@ class DetailViewController: UIViewController {
     var chartData : [ChartDataEntry] = []
     var name: String = ""
     var code: String = ""
+    var tableName: String = ""
     
     lazy var refresher: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -98,7 +99,7 @@ class DetailViewController: UIViewController {
     //
     func fetchCurrenyData(){
     DispatchQueue.main.async {
-        let apiUrl = "http://api.nbp.pl/api/exchangerates/rates/A/\(self.code)/2019-12-01/2019-12-20/"
+        let apiUrl = "http://api.nbp.pl/api/exchangerates/rates/\(self.tableName)/\(self.code)/2019-12-01/2019-12-20/"
         Alamofire.request(apiUrl, method: .get).responseJSON(completionHandler: { (response) in
             switch response.result {
             case .success(let value):
@@ -107,7 +108,7 @@ class DetailViewController: UIViewController {
                 self.i = 0
                 let data = JSON(value)
                 data["rates"].array?.forEach({(currency) in
-                    let currency = Currency(tableName: "A", currencyName: self.name, currencyCode: self.code, averageCurrencyRate: currency["mid"].doubleValue, effectiveDate: currency["effectiveDate"].stringValue)
+                    let currency = Currency(tableName: self.tableName, currencyName: self.name, currencyCode: self.code, averageCurrencyRate: currency["mid"].doubleValue, effectiveDate: currency["effectiveDate"].stringValue)
                     self.currencies.append(currency)
                     let point = ChartDataEntry(x: Double(self.i), y: currency.averageCurrencyRate)
                     self.chartData.append(point)
