@@ -21,8 +21,19 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        endDate = dateFormatter.string(from: currentDate)
+        print(endDate)
+        let modifiedDate = Calendar.current.date(byAdding: .day, value: -30, to: currentDate)!
+        startDate = dateFormatter.string(from: modifiedDate)
+        
+        nameLabel.text = name
+
         //
-        // MARK: - Custom Navigation Controller look
+        // MARK: - Custom View Controller look
         //
         
         // Custom Navigation Bar
@@ -32,7 +43,7 @@ class DetailViewController: UIViewController {
         tabBarController?.tabBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
         // first load data
-        fetchCurrenyData()
+        fetchCurrenyData(startDate: startDate, endDate: endDate)
         
         
         // Refresh Table View
@@ -41,11 +52,17 @@ class DetailViewController: UIViewController {
         startDatePicker = UIDatePicker()
         startDatePicker?.datePickerMode = .date
         startDateTextField.inputView = startDatePicker
+        startDatePicker?.addTarget(self, action: #selector(DetailViewController.startdateChanged(datePicker:)), for: .valueChanged)
         
         endDatePicker = UIDatePicker()
         endDatePicker?.datePickerMode = .date
         endDateTextField.inputView = endDatePicker
+        endDatePicker?.addTarget(self, action: #selector(DetailViewController.enddateChanged(datePicker:)), for: .valueChanged)
+
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.viewTapped(gestureRecognizer:)))
+        
+        view.addGestureRecognizer(tapGesture)
         
     }
     
@@ -60,6 +77,8 @@ class DetailViewController: UIViewController {
     var i = 0
     var startDatePicker: UIDatePicker?
     var endDatePicker: UIDatePicker?
+    var startDate: String = "2019-12-01"
+    var endDate: String = "2019-12-25"
     
     lazy var refresher: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -77,17 +96,39 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var startDateTextField: UITextField!
     @IBOutlet weak var endDateTextField: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!
     
     //
     // MARK: - available to Objective-C
     //
     @objc func refresh() {
-        fetchCurrenyData()
-        
+        fetchCurrenyData(startDate: startDate, endDate: endDate)
         let deadline = DispatchTime.now() + .milliseconds(700)
         DispatchQueue.main.asyncAfter(deadline: deadline) {
             self.refresher.endRefreshing()
         }
+    }
+    
+    @objc func startdateChanged(datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        startDateTextField.text = dateFormatter.string(from: startDatePicker!.date)
+        startDate = dateFormatter.string(from: startDatePicker!.date)
+        print(startDate)
+    }
+    
+    @objc func enddateChanged(datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        endDateTextField.text = dateFormatter.string(from: endDatePicker!.date)
+        endDate = dateFormatter.string(from: endDatePicker!.date)
+        refresh()
+
+    }
+    
+    @objc func viewTapped(gestureRecognizer: UIGestureRecognizer) {
+
+        view.endEditing(true)
     }
     
     
@@ -110,9 +151,10 @@ class DetailViewController: UIViewController {
     //
     // MARK: - Fetch JSON Data
     //
-    func fetchCurrenyData(){
+    func fetchCurrenyData(startDate: String, endDate: String){
     DispatchQueue.main.async {
-        let apiUrl = "http://api.nbp.pl/api/exchangerates/rates/\(self.tableName)/\(self.code)/2019-12-01/2019-12-20/"
+        let apiUrl = "http://api.nbp.pl/api/exchangerates/rates/\(self.tableName)/\(self.code)/\(startDate)/\(endDate)/"
+        print(apiUrl)
         Alamofire.request(apiUrl, method: .get).responseJSON(completionHandler: { (response) in
             switch response.result {
             case .success(let value):
@@ -181,6 +223,4 @@ extension DetailViewController: UITableViewDelegate {
     tableView.deselectRow(at: indexPath, animated: true)
   }
 }
-
-
 
