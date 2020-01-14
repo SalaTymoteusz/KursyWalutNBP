@@ -1,92 +1,3 @@
-////
-////  DetailViewController.swift
-////  KursyWalutNBP
-////
-////  Created by xxx on 13/01/2020.
-////  Copyright © 2020 xxx. All rights reserved.
-////
-//
-//import UIKit
-//import Alamofire
-//import SwiftyJSON
-//import Charts
-//
-//class DetailViewController: UIViewController {
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        currencyNameLabel.text = name
-//        print(code)
-//
-//        fetchCurrenyData(startDate: "2020-01-01", endDate: "2020-01-14")
-//
-//        setChartView()
-//
-//        // Do any additional setup after loading the view.
-//    }
-//
-//    var name: String = ""
-//    var code: String = ""
-//    var currencies: [Currency] = []
-//    var mid1: [Double] = []
-//
-//    @IBOutlet weak var currencyNameLabel: UILabel!
-//    @IBOutlet weak var lineChartView: LineChartView!
-//
-//
-//    func setChartView() {
-////        let entry1 = ChartDataEntry(x:2.0,y:3.9047)
-//
-//        lineChartView.data?.setValueTextColor(NSUIColor.white)
-//        lineChartView.data?.setValueFont(NSUIFont.systemFont(ofSize: 0))
-//        lineChartView.xAxis.labelTextColor = UIColor.white
-//        lineChartView.leftAxis.labelTextColor = UIColor.white
-//        lineChartView.rightAxis.labelTextColor = UIColor.white
-//        lineChartView.legend.textColor = UIColor.white
-//
-//
-//
-//    }
-//
-//
-//    func fetchCurrenyData(startDate: String, endDate: String){
-//        DispatchQueue.main.async {
-//            let apiUrl = "http://api.nbp.pl/api/exchangerates/rates/A/USD/2019-12-01/2019-12-20/"
-//            Alamofire.request(apiUrl, method: .get).responseJSON(completionHandler: { (response) in
-//                switch response.result {
-//                case .success(let value):
-//
-//                    let data = JSON(value)
-//                    var i = 0
-//                    data["rates"].array?.forEach({(currency) in
-//                        let currency = Currency(tableName: "A", currencyName: self.name, currencyCode: self.code, averageCurrencyRate: currency["mid"].doubleValue, effectiveDate: currency["effectiveDate"].stringValue)
-//                        self.currencies.append(currency)
-//                        print(self.currencies.count)
-//                        print(self.currencies[i].averageCurrencyRate)
-//                        self.mid1.append(self.currencies[i].averageCurrencyRate)
-//                        print(self.currencies[i].effectiveDate)
-//                        i = i + 1
-//                    })
-//                    print(self.currencies.count)
-//
-//
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                }
-//            })
-//        }
-//    }
-//
-//
-//}
-//
-//  CurrencyListViewController.swift
-//  KursyWalutNBP
-//
-//  Created by xxx on 12/01/2020.
-//  Copyright © 2020 xxx. All rights reserved.
-//
-
 //
 //  CurrencyListViewController.swift
 //  KursyWalutNBP
@@ -98,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Charts
 
 //
 // MARK: - Currency List View Controller
@@ -122,6 +34,8 @@ class DetailViewController: UIViewController {
         // first load data
         fetchCurrenyData()
         
+//        setChartView()
+        
         //
         // MARK: - Refresh Table View
         //
@@ -132,6 +46,7 @@ class DetailViewController: UIViewController {
     // MARK: - Variables And Properties
     //
     var currencies: [Currency] = []
+    var chartData : [ChartDataEntry] = []
     var name: String = ""
     var code: String = ""
     
@@ -142,12 +57,14 @@ class DetailViewController: UIViewController {
         
         return refreshControl
     }()
+    
+    var i = 0
  
     //
     // MARK: - Outlets
     //
-    @IBOutlet weak var chartView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var lineChartView: LineChartView!
     
     //
     // MARK: - available to Objective-C
@@ -162,21 +79,43 @@ class DetailViewController: UIViewController {
     }
     
     
+    func setChartView(chartData: [ChartDataEntry]) {
+        let dataSet = LineChartDataSet(values:chartData,label:code)
+        let data = LineChartData(dataSet:dataSet)
+        self.lineChartView.data = data
+            
+            lineChartView.data?.setValueTextColor(NSUIColor.white)
+            lineChartView.data?.setValueFont(NSUIFont.systemFont(ofSize: 0))
+            lineChartView.xAxis.labelTextColor = UIColor.white
+            lineChartView.leftAxis.labelTextColor = UIColor.white
+            lineChartView.rightAxis.labelTextColor = UIColor.white
+            lineChartView.legend.textColor = UIColor.white
+        }
+    
+    
     //
     // MARK: - Fetch JSON Data
     //
     func fetchCurrenyData(){
     DispatchQueue.main.async {
-        let apiUrl = "http://api.nbp.pl/api/exchangerates/rates/A/USD/2019-12-01/2019-12-20/"
+        let apiUrl = "http://api.nbp.pl/api/exchangerates/rates/A/\(self.code)/2019-12-01/2019-12-20/"
         Alamofire.request(apiUrl, method: .get).responseJSON(completionHandler: { (response) in
             switch response.result {
             case .success(let value):
-
+                self.currencies.removeAll()
+                self.chartData.removeAll()
+                self.i = 0
                 let data = JSON(value)
                 data["rates"].array?.forEach({(currency) in
                     let currency = Currency(tableName: "A", currencyName: self.name, currencyCode: self.code, averageCurrencyRate: currency["mid"].doubleValue, effectiveDate: currency["effectiveDate"].stringValue)
                     self.currencies.append(currency)
+                    let point = ChartDataEntry(x: Double(self.i), y: currency.averageCurrencyRate)
+                    self.chartData.append(point)
+                    self.i = self.i + 1
                     })
+                
+                    
+                self.setChartView(chartData: self.chartData)
                     self.tableView.reloadData()
                     print("table reloaded")
                 case .failure(let error):

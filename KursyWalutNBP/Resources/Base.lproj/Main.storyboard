@@ -282,7 +282,7 @@
                                     <outlet property="delegate" destination="i9z-Fe-FZq" id="J7e-Hl-i7b"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8k-UU-ZIf">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8k-UU-ZIf" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="20" y="20" width="374" height="312"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
@@ -302,7 +302,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="00Q-kp-BYc"/>
                     <connections>
-                        <outlet property="chartView" destination="L8k-UU-ZIf" id="q4g-sy-Ji1"/>
+                        <outlet property="lineChartView" destination="L8k-UU-ZIf" id="Yb9-1q-sIU"/>
                         <outlet property="tableView" destination="JLK-9W-bwp" id="3OK-uf-Q9Y"/>
                     </connections>
                 </viewController>
