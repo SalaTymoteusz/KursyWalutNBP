@@ -21,7 +21,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        
+        // Set current date
         let currentDate = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -29,7 +29,6 @@ class DetailViewController: UIViewController {
         print(endDate)
         let modifiedDate = Calendar.current.date(byAdding: .day, value: -30, to: currentDate)!
         startDate = dateFormatter.string(from: modifiedDate)
-        
         nameLabel.text = name
 
         //
@@ -49,6 +48,10 @@ class DetailViewController: UIViewController {
         // Refresh Table View
         tableView.refreshControl = refresher
         
+        
+        //
+        // MARK: - Set Date Pickers
+        //
         startDatePicker = UIDatePicker()
         startDatePicker?.datePickerMode = .date
         startDateTextField.inputView = startDatePicker
@@ -59,7 +62,9 @@ class DetailViewController: UIViewController {
         endDateTextField.inputView = endDatePicker
         endDatePicker?.addTarget(self, action: #selector(DetailViewController.enddateChanged(datePicker:)), for: .valueChanged)
 
-        
+        //
+        // MARK: - Set Gest Recognizer
+        //
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.viewTapped(gestureRecognizer:)))
         
         view.addGestureRecognizer(tapGesture)
